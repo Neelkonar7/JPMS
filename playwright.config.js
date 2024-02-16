@@ -40,7 +40,16 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'],
+                baseURL:"https://mcstaging.paulmitchell.com" 
+              },
+      
+    },
+    {
+      name: 'chromium_prod',
+      use: { ...devices['Desktop Chrome'],
+                baseURL:"https://www.paulmitchell.com" 
+              },
       
     },
     
