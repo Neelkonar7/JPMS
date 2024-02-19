@@ -1,0 +1,14 @@
+{
+
+    "PDP":{
+        "product_url":"/pro-tools/pro-irons/express-ion-clipped-detachable-curling-iron",
+        "config_product_prod" :"/tea-tree/tea-tree-special-detox/tea-tree-special-detox-kombucha-rinse"
+
+    },
+    "cartBtn":"#cartBtn",
+    "product_variants" : ".tileList-root-7EZ",
+    "success_addtocartmsg":"#toast-root",
+    "expected_message":"Your product has successfully been added to your bag.",
+    "minicart_btn":".miniCart-sliderLine-Ht4",
+    "minicart_icon":"#miniCartBtn"
+}

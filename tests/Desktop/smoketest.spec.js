@@ -1,20 +1,25 @@
-//const faker = require('@faker-js/faker@')
+
 const {test, expect} = require('@playwright/test')
 const login = require('../selectors/userauthentication.json')
 const {Authentication} = require('../../pageobject/Account')
 const cart = require('../selectors/cart.json')
+const {Checkout} = require('/Users/milin/Desktop/Automation_JPMS/JPMS/pageobject/Checkout')
 
 const exp = require('constants')
 test.describe("user Authentication",async()=>{
 
     let page
+    let context
     test.beforeEach(async({browser})=>{
-    const context = await browser.newContext()
+    context = await browser.newContext()
     page = await context.newPage()
     await page.goto("/")
     await page.getByLabel(login.dialog_close).click()
 })
 
+    test.afterAll(async()=>{
+        await context.close()
+    })
     test("Verify Login",async()=>{
         const Login = new Authentication(page)
         const password = "wxyz@1234"
@@ -35,17 +40,21 @@ test.describe("user Authentication",async()=>{
 test.describe.serial("Smoke Test",async()=>{
 
 let page
+let context
 test.beforeAll(async({browser})=>{
-    const context = await browser.newContext()
+    context = await browser.newContext()
     page = await context.newPage()
     await page.goto("/")
     await page.getByLabel(login.dialog_close).click()
 })
 
+test.afterAll(async()=>{
+    await context.close()
+})
+
 test("Verify Add Product to Cart",async()=>{
     await page.goto(cart.PDP.product_url)
     await page.locator(cart.cartBtn).click()
-    //const success_addtocartmsg = await page.locator(cart.success_addtocartmsg).textContent()
     expect(page.locator(cart.success_addtocartmsg)).toHaveText(cart.expected_message)
 })
 
@@ -72,22 +81,14 @@ test("Verify Configurable product to be added to Cart",async()=>{
 })
 
 test("Verify Checkout process",async()=>{
-
+    const checkoutobj = new Checkout(page)
     await page.locator(cart.minicart_btn).click()
     expect(page.url()).toContain("https://www.paulmitchell.com/cart")
     await page.getByText("Proceed to Checkout").click()
     expect(page.url()).toContain("https://www.paulmitchell.com/checkout")
-    await page.locator("#email").fill("neelautotest@yopmail.com")
-    await page.locator("#firstname").fill("Neel")
-    await page.locator("#lastname").fill("Autotest")
-    await page.getByPlaceholder("Street Address 1").fill("17802 W Little York Rd")
-    await page.locator("#city").fill("Houston")
-    await page.locator("#region-root-1B2").selectOption("Texas")
-    await page.locator("#postcode-root-ttM").fill("77084")
-    await page.locator("#telephone").fill("9000000000")
-    await page.getByText("Continue to Shipping Method").click()
-    await page.locator(".shippingRadios-radioLabel-pzL").first().click()
-    await page.locator(".shippingMethod-formButtons-C4X.grid").click()
+    await checkoutobj.notLoggedinUser()
+    await checkoutobj.shippingInformation()
+    await checkoutobj.shippingMethod()
 
 })
 

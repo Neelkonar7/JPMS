@@ -32,7 +32,8 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    screenshot:'only-on-failure'
+    screenshot:'only-on-failure',
+    video: 'on'
     
   },
 
@@ -41,14 +42,22 @@ module.exports = defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
-                baseURL:"https://mcstaging.paulmitchell.com" 
+                baseURL:"https://mcstaging.paulmitchell.com" ,
+                video: {
+                  mode: 'on',
+                  size : {width: 1920 , height:619}
+                }
               },
       
     },
     {
       name: 'chromium_prod',
       use: { ...devices['Desktop Chrome'],
-                baseURL:"https://www.paulmitchell.com" 
+                baseURL:"https://www.paulmitchell.com" ,
+                video: {
+                  mode: 'on',
+                  size : {width: 1920 , height:619}
+                }
               },
       
     },

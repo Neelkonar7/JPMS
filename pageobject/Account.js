@@ -1,7 +1,7 @@
 const { expect } = require('playwright/test')
-const login = require('../tests/selectors/login.json')
+const login = require('../tests/selectors/userauthentication.json')
 
-class Login_User{
+class Authentication{
     constructor(page){
         this.page = page
 
@@ -83,4 +83,4 @@ export function generateRandomString(length) {
   //const randomEmail = `user${generateRandomString(5)}@example.com`;
   //console.log(randomEmail);
 
-module.exports = {Login_User}
+module.exports = {Authentication}

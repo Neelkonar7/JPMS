@@ -4,9 +4,9 @@ class Checkout{
         this.page = page
     }
     async notLoggedinUser(){
-        await this.page.locator("#email").fill("neeltest02@yopmail.com")
+        await this.page.locator("#email").fill("neelautotest@yopmail.com")
         await this.page.locator("#firstname").fill("neel")
-        await this.page.locator("#lastname").fill("test02")
+        await this.page.locator("#lastname").fill("autotest")
     } 
 
     async shippingInformation(){
@@ -17,12 +17,12 @@ class Checkout{
         await dropdown.selectOption("North Dakota")
         await this.page.locator("#postcode-root-ttM").fill("58104")
         await this.page.getByPlaceholder("Phone Number").fill("1234567890")
-        await this.page.locator('[type="submit"]').nth(1).click()
-        //await this.page.getByRole('button',{name: 'Continue to Shipping Method'}).click()
+        //await this.page.locator('[type="submit"]').nth(1).click()
+        await this.page.getByRole('button',{name: 'Continue to Shipping Method'}).click()
     }
     
     async shippingMethod(){
-        await this.page.locator(".shippingRadios-radioLabel-pzL").filter({hasText:'Fixed'}).click()
+        await this.page.locator(".shippingRadios-radioLabel-pzL").filter({hasText:'Ground'}).click()
         await this.page.getByRole('button',{name: "Continue to Payment Information"}).click()
     }
 
