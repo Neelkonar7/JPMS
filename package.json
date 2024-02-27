@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "testcase" : "npx playwright test rough.spec.js --project='chromium' --headed " 
+
+    "staging" : "npx playwright test smoketest.spec.js --headed --project='chromium'",
+    "production" : "npx playwright test smoketest.spec.js --headed --project='chromium_prod'"
+
   },
   "keywords": [],
   "author": "",
