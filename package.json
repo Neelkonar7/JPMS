@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "staging" : "npx playwright test smoketest.spec.js --headed --project='chromium'",
+    "production" : "npx playwright test smoketest.spec.js --headed --project='chromium_prod'"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
