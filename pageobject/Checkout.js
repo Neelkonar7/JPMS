@@ -1,7 +1,8 @@
 class Checkout{
 
-    constructor(page){
+    constructor(page,context){
         this.page = page
+        this.context = context
     }
     async notLoggedinUser(){
         await this.page.locator("#email").fill("neelautotest@yopmail.com")
@@ -35,6 +36,17 @@ class Checkout{
         await this.page.frameLocator('iframe[name="braintree-hosted-field-postalCode"]').getByLabel('Postal Code').fill('12345')
     }
     
+    async payPal(){
+        await this.page.locator("#paymentMethod--braintree_paypal").click()
+        const promisePage = this.context.waitForEvent('page')
+        await this.page.frameLocator(".component-frame.visible").locator(".paypal-button-label-container").click()
+        const paypalPage = await promisePage
+        await paypalPage.locator("#email").fill("neeltest@yopmail.com")
+        await paypalPage.locator("getByRole('button', { name: 'Next' })").click()
+        await paypalPage.locator("#password").fill("wxyz@123")
+        await paypalPage.locator("#btnLogin").click()
+        await paypalPage.locator(".CheckoutButton_buttonWrapper_2VloF").click()
+    }
     async reviewConfirm(){
         await this.page.locator('#checkout-review-order').click()
         await this.page.getByRole("button",{name: "Place Order"}).click()

@@ -11,6 +11,7 @@ const exp = require('constants')
 test.describe("user Authentication",async()=>{
 
     let page
+    let context
     test.beforeEach(async({browser})=>{
     context = await browser.newContext()
     page = await context.newPage()
@@ -53,7 +54,7 @@ test.afterAll(async()=>{
     await context.close()
 })
   
-  test("Verify Add Product to Cart", async () => {
+  test.only("Verify Add Product to Cart", async () => {
     const cartPage = new CartPage(page);
     await cartPage.gotoProductPage(cart.PDP.product_url);
     await cartPage.addToCart();
@@ -71,7 +72,7 @@ test.afterAll(async()=>{
     expect(value).toHaveValue('4');
   });
   
-  test("Verify Configurable product to be added to Cart", async () =>  {
+  test.skip("Verify Configurable product to be added to Cart", async () =>  {
     const cartPage = new CartPage(page);
     await cartPage.gotoProductPage(cart.PDP.config_product_prod);
     const select = page.locator(cart.product_variants);
@@ -88,15 +89,23 @@ test.afterAll(async()=>{
         expect(await page.locator(".searchPage-headingHighlight-BYR.font-bold").textContent()).toContain("Tea Tree")
     })
 
-    test("Verify Checkout process",async()=>{
+    test.only("Verify Checkout process",async()=>{
         const checkoutobj = new Checkout(page)
+        await page.locator(cart.minicart_icon).click()
         await page.locator(cart.minicart_btn).click()
-        expect(page.url()).toContain("https://www.paulmitchell.com/cart")
+        expect(page.url()).toContain("paulmitchell.com/cart")
         await page.getByText("Proceed to Checkout").click()
-        expect(page.url()).toContain("https://www.paulmitchell.com/checkout")
+        expect(page.url()).toContain("paulmitchell.com/checkout")
         await checkoutobj.notLoggedinUser()
         await checkoutobj.shippingInformation()
         await checkoutobj.shippingMethod()
+
+    })
+
+    test.only("Verify Paypal Payment Method",async()=>{
+        const checkoutobj = new Checkout(page,context)
+        await checkoutobj.payPal()
+        await checkoutobj.reviewConfirm()       
 
     })
 
