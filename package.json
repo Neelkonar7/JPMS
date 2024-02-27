@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "staging" : "npx playwright test smoketest.spec.js --headed --project=chromium",
-    "production" : "npx playwright test smoketest.spec.js --headed --project=chromium_prod"
+    "staging": "npx playwright test smoketest.spec.js --headed --project=chromium",
+    "production": "npx playwright test smoketest.spec.js --headed --project=chromium_prod"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^8.3.1",
-    "@playwright/test": "^1.40.1",
+    "@playwright/test": "^1.41.2",
     "@types/node": "^20.10.5"
   }
 }
