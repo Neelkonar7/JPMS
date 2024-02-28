@@ -1,7 +1,7 @@
 
 const {test, expect} = require('@playwright/test')
 const login = require('../selectors/userauthentication.json')
-const {Authentication} = require('../../pageobject/Account')
+const {Authentication} = require('../pageobject/Account')
 const cart = require('../selectors/cart.json')
 const {Checkout} = require('../pageobject/Checkout')
 const {CartPage} = require('../pageobject/CartPage')
