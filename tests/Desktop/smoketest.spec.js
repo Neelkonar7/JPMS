@@ -54,14 +54,14 @@ test.afterAll(async()=>{
     await context.close()
 })
   
-  test.only("Verify Add Product to Cart", async () => {
+  test("Verify Add Product to Cart", async () => {
     const cartPage = new CartPage(page);
     await cartPage.gotoProductPage(cart.PDP.product_url);
     await cartPage.addToCart();
     await cartPage.verifySuccessMessage(cart.expected_message);
   });
   
-  test("Verify Qty can be increased and add Product to Cart", async () =>  {
+  test.skip("Verify Qty can be increased and add Product to Cart", async () =>  {
     const cartPage = new CartPage(page);
     await cartPage.gotoProductPage(cart.PDP.product_url);
     await page.getByRole('textbox', { name: 'Item Quantity' }).fill("3");
@@ -87,9 +87,10 @@ test.afterAll(async()=>{
         await page.locator(plp_pdp.search_txtbx).type("Tea Tree")
         await page.keyboard.press('Enter')
         expect(await page.locator(".searchPage-headingHighlight-BYR.font-bold").textContent()).toContain("Tea Tree")
+        await page.waitForTimeout(5000)
     })
 
-    test.only("Verify Checkout process",async()=>{
+    test("Verify Checkout process",async()=>{
         const checkoutobj = new Checkout(page)
         await page.locator(cart.minicart_icon).click()
         await page.locator(cart.minicart_btn).click()
@@ -102,7 +103,7 @@ test.afterAll(async()=>{
 
     })
 
-    test.only("Verify Paypal Payment Method",async()=>{
+    test("Verify Paypal Payment Method",async()=>{
         const checkoutobj = new Checkout(page,context)
         await checkoutobj.payPal()
         await checkoutobj.reviewConfirm()       
