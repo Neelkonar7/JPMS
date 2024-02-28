@@ -42,7 +42,7 @@ class Checkout{
         await this.page.frameLocator(".component-frame.visible").locator(".paypal-button-label-container").click()
         const paypalPage = await promisePage
         await paypalPage.locator("#email").fill("neeltest@yopmail.com")
-        await paypalPage.locator("getByRole('button', { name: 'Next' })").click()
+        await paypalPage.getByRole('button', { name: 'Next' }).click()
         await paypalPage.locator("#password").fill("wxyz@123")
         await paypalPage.locator("#btnLogin").click()
         await paypalPage.locator(".CheckoutButton_buttonWrapper_2VloF").click()
