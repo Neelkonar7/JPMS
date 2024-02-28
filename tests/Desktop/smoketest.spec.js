@@ -8,36 +8,6 @@ const {CartPage} = require('/Users/milin/Desktop/Automation_JPMS/JPMS/pageobject
 const plp_pdp = require('../selectors/PLP_PDP.json')
 
 const exp = require('constants')
-test.describe("user Authentication",async()=>{
-
-    let page
-    let context
-    test.beforeEach(async({browser})=>{
-    context = await browser.newContext()
-    page = await context.newPage()
-    await page.goto("/")
-    await page.getByLabel(login.dialog_close).click()
-})
-
-    test.afterAll(async()=>{
-        await context.close()
-    })
-    test("Verify Login",async()=>{
-        const Login = new Authentication(page)
-        const password = "wxyz@1234"
-        await Login.signin(password)
-        await Login.logOut()
-    }) 
-    
-    test("user Registration",async()=>{
-        const Login = new Authentication(page)
-        await Login.createnewUser()
-        await Login.myAccount()
-        await page.waitForTimeout(3000)
-        await page.getByRole('button', { name: 'Sign Out' }).click()
-    })
-})
-
 
 test.describe.serial("Smoke Test",async()=>{
 
@@ -53,6 +23,20 @@ test.beforeAll(async({browser})=>{
 test.afterAll(async()=>{
     await context.close()
 })
+    test("Verify Login",async()=>{
+        const Login = new Authentication(page)
+        const password = "wxyz@1234"
+        await Login.signin(password)
+        await Login.logOut()
+    }) 
+
+    test("user Registration",async()=>{
+        const Login = new Authentication(page)
+        await Login.createnewUser()
+        await Login.myAccount()
+        await page.waitForTimeout(3000)
+        await page.getByRole('button', { name: 'Sign Out' }).click()
+    })
   
   test("Verify Add Product to Cart", async () => {
     const cartPage = new CartPage(page);
@@ -92,6 +76,7 @@ test.afterAll(async()=>{
 
     test("Verify Checkout process",async()=>{
         const checkoutobj = new Checkout(page)
+        await page.locator(cart.minicart_icon).click()
         await page.locator(cart.minicart_icon).click()
         await page.locator(cart.minicart_btn).click()
         expect(page.url()).toContain("paulmitchell.com/cart")
