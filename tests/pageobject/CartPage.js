@@ -1,4 +1,4 @@
-const cart = require('/Users/milin/Desktop/Automation_JPMS/JPMS/tests/selectors/cart.json')
+const cart = require('../selectors/cart.json')
 const { expect } = require('playwright/test')
 
 class CartPage{
