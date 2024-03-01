@@ -9,7 +9,7 @@ const plp_pdp = require('../selectors/PLP_PDP.json')
 
 const exp = require('constants')
 
-test.describe.serial("Smoke Test",async()=>{
+test.describe("Smoke Test",async()=>{
 
 let page
 let context
@@ -45,7 +45,7 @@ test.afterAll(async()=>{
     await cartPage.verifySuccessMessage(cart.expected_message);
   });
   
-  test.skip("Verify Qty can be increased and add Product to Cart", async () =>  {
+  test("Verify Qty can be increased and add Product to Cart", async () =>  {
     const cartPage = new CartPage(page);
     await cartPage.gotoProductPage(cart.PDP.product_url);
     await page.getByRole('textbox', { name: 'Item Quantity' }).fill("3");

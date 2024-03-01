@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "staging": "npx playwright test smoketest.spec.js --headed --project=chromium",
+    "staging": "npx playwright test smoketest.spec.js --headed --project=chromium --workers=1",
     "production": "npx playwright test smoketest.spec.js --headed --project=chromium_prod"
   },
   "keywords": [],
