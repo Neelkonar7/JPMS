@@ -1,5 +1,5 @@
 const { expect } = require('playwright/test')
-const login = require('../tests/selectors/userauthentication.json')
+const login = require('../selectors/userauthentication.json')
 
 class Authentication{
     constructor(page){
