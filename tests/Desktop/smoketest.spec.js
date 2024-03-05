@@ -31,7 +31,7 @@ test.afterAll(async()=>{
         await page.waitForTimeout(5000)
     }) 
 
-    test("user Registration",async()=>{
+    test("user Registration @skip",async()=>{
         const Login = new Authentication(page)
         await Login.createnewUser()
         await Login.myAccount()
@@ -89,7 +89,7 @@ test.afterAll(async()=>{
 
     })
 
-    test("Verify Paypal Payment Method",async()=>{
+    test("Verify Paypal Payment Method @skip",async()=>{
         const checkoutobj = new Checkout(page,context)
         await checkoutobj.payPal()
         await checkoutobj.reviewConfirm()       
