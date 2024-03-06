@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "staging": "npx playwright test smoketest.spec.js --headed --project=chromium --workers=1",
-    "production": "npx playwright test smoketest.spec.js --headed --project=chromium_prod"
+    "production": "npx playwright test smoketest.spec.js --headed --project=chromium_prod --workers=1 --grep-invert @skip",
+    "stg_skip_reg_checkout" : "npx playwright test smoketest.spec.js --headed --project=chromium --workers=1 --grep-invert 'Registration'"
   },
   "keywords": [],
   "author": "",

@@ -21,7 +21,7 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html'],['list']],
   timeout: 5 * 20000,
   
   
@@ -33,7 +33,7 @@ module.exports = defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
     screenshot:'only-on-failure',
-    video: 'on'
+    //video: 'on'
     
   },
 
@@ -43,10 +43,7 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
                 baseURL:"https://mcstaging.paulmitchell.com" ,
-                video: {
-                  mode: 'on',
-                  size : {width: 1920 , height:619}
-                }
+               
               },
       
     },
@@ -54,10 +51,7 @@ module.exports = defineConfig({
       name: 'chromium_prod',
       use: { ...devices['Desktop Chrome'],
                 baseURL:"https://www.paulmitchell.com" ,
-                video: {
-                  mode: 'on',
-                  size : {width: 1920 , height:619}
-                }
+                
               },
       
     },
