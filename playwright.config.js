@@ -43,10 +43,7 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
                 baseURL:"https://mcstaging.paulmitchell.com" ,
-                video: {
-                  mode: 'on',
-                  size : {width: 1920 , height:619}
-                }
+               
               },
       
     },
@@ -54,10 +51,7 @@ module.exports = defineConfig({
       name: 'chromium_prod',
       use: { ...devices['Desktop Chrome'],
                 baseURL:"https://www.paulmitchell.com" ,
-                video: {
-                  mode: 'on',
-                  size : {width: 1920 , height:619}
-                }
+                
               },
       
     },

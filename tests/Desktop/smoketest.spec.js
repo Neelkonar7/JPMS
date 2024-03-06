@@ -8,13 +8,24 @@ const {CartPage} = require('../pageobject/CartPage')
 const plp_pdp = require('../selectors/PLP_PDP.json')
 
 const exp = require('constants')
+const { timeStamp } = require('console')
 
 test.describe("Smoke Test",async()=>{
 
 let page
 let context
-test.beforeAll(async({browser})=>{
-    context = await browser.newContext()
+test.beforeAll(async({browser, browserName})=>{
+    context = await browser.newContext({
+      recordVideo : {
+        dir: `videos/${Date.now()}.mp4`,
+        size:{
+          width: 1920,
+          height: 800
+        },
+        startOnFirstAction: true,
+      }
+    })
+
     page = await context.newPage()
     await page.goto("/")
     await page.getByLabel(login.dialog_close).click()
