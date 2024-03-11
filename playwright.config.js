@@ -61,6 +61,15 @@ module.exports = defineConfig({
       use: { ...devices['iPhone 14'],viewport: { width: 390, height: 844 } },
       
     },
+
+    {
+      name: 'chromium_prostaging',
+      use: { ...devices['Desktop Chrome'],
+                baseURL:"https://pro.mcstaging.paulmitchell.com" ,
+               
+              },
+      
+    },
 /*
     {
       name: 'firefox',

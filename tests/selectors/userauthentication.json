@@ -2,5 +2,8 @@
     "dialog_close" : "Close dialog",
     "user_icon" : ".accountChip-acctIcon-qJo",
     "emailtxtbx" : "#email",
-    "passwordtxtbx" : "#Password"
+    "passwordtxtbx" : "#Password",
+    "emailid" : "neeltest@yopmail.com",
+    "proemailid" : "neelprotest@yopmail.com"
+
 }
