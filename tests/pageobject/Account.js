@@ -1,3 +1,5 @@
+import { error } from 'console'
+
 const { expect } = require('playwright/test')
 const login = require('../selectors/userauthentication.json')
 
@@ -10,7 +12,17 @@ class Authentication{
     async signin(password){
         
         await this.page.locator(login.user_icon).click()
-        await this.page.locator(login.emailtxtbx).type("neeltest@yopmail.com", {delay:100})
+        if(this.page.url() =="https://pro.mcstaging.paulmitchell.com/" )
+        {
+            var email_id = login.proemailid
+        }
+        else if(this.page.url()== "https://mcstaging.paulmitchell.com/"){
+            var email_id = login.emailid
+        }
+        else{
+            throw error()
+        }
+        await this.page.locator(login.emailtxtbx).type(email_id, {delay:100})
         await this.page.waitForTimeout(5000)
         await this.page.getByText("Continue").first().click()
         await this.page.locator(login.passwordtxtbx).type(password)
