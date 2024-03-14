@@ -14,7 +14,9 @@
   "devDependencies": {
     "@faker-js/faker": "^8.3.1",
     "@playwright/test": "^1.41.2",
-    "@types/node": "^20.10.5"
+    "@types/node": "^20.10.5",
+    "allure-commandline": "^2.27.0",
+    "allure-playwright": "^2.14.1"
   },
   "dependencies": {
     "convert-excel-to-json": "^1.7.0"
