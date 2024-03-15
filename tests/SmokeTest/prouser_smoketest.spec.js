@@ -3,6 +3,7 @@ import exp from 'constants'
 
 const {test, expect} = require('@playwright/test')
 const login = require('../selectors/userauthentication.json')
+const faker = require('@faker-js/faker')
 
 test.describe.serial("ProUser Smoke Test",async()=>{
     let page
@@ -74,8 +75,9 @@ test.describe.serial("ProUser Smoke Test",async()=>{
         await page.locator(".field-checkbox").click()
         await page.getByRole('button',{name: 'Next'}).click()
 
-        await page.locator("#address-suggested-use").click()
+        await page.locator("#address-original-keep").click()
         await page.locator("#distributorId").selectOption("BSG Canada")
+        await page.locator("#distributor_account_no").fill(faker.finance.accountNumber(5))
         await page.getByRole('button',{name: 'Next'}).click()
         await page.locator("#brand_cloppity_1").click()
         await page.locator("#brand_cloppity_3").click()
