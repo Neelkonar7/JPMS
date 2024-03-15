@@ -39,6 +39,7 @@ test.afterAll(async()=>{
         const password = "wxyz@1234"
         await Login.signin(password)        
         await page.waitForTimeout(5000)
+        await Login.logOut()
     }) 
 
     test("user Registration @skip",async()=>{
