@@ -77,7 +77,7 @@ test.describe.serial("ProUser Smoke Test",async()=>{
 
         await page.locator("#address-original-keep").click()
         await page.locator("#distributorId").selectOption("BSG Canada")
-        await page.locator("#distributor_account_no").fill(faker.finance.accountNumber(5))
+        await page.locator("#distributor_account_no").fill(generateRandomNumber(5))
         await page.getByRole('button',{name: 'Next'}).click()
         await page.locator("#brand_cloppity_1").click()
         await page.locator("#brand_cloppity_3").click()
@@ -120,6 +120,16 @@ test.describe.serial("ProUser Smoke Test",async()=>{
 
 export function generateRandomString(length) {
     const characters = 'abcdefghijklmnopqrstuvwxyz';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+    return result;
+  }
+
+  export function generateRandomNumber(length) {
+    const characters = '1234567890';
     let result = '';
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
