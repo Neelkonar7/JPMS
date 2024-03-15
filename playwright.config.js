@@ -43,7 +43,7 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'],
                 baseURL:"https://mcstaging.paulmitchell.com" ,
-               
+                headless: false
               },
       
     },
@@ -51,14 +51,16 @@ module.exports = defineConfig({
       name: 'chromium_prod',
       use: { ...devices['Desktop Chrome'],
                 baseURL:"https://www.paulmitchell.com" ,
-                
+                headless: false
               },
       
     },
     
     {
       name: 'PWA',
-      use: { ...devices['iPhone 14'],viewport: { width: 390, height: 844 } },
+      use: { ...devices['iPhone 14'],viewport: { width: 390, height: 844 },
+      headless: false      
+    },
       
     },
 
@@ -66,14 +68,16 @@ module.exports = defineConfig({
       name: 'chromium_prostaging',
       use: { ...devices['Desktop Chrome'],
                 baseURL:"https://pro.mcstaging.paulmitchell.com" ,
-               
+                headless: false
               },
       
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { ...devices['Desktop Firefox'], 
+      headless: false
+    },
     },
 /*
     {
