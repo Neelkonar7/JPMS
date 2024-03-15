@@ -111,7 +111,7 @@ test.describe.serial("ProUser Smoke Test",async()=>{
         await page.goto("https://pro.mcstaging.paulmitchell.com/")
         await page.locator(".brandMenu-navTriggerIcon-vQl").click()
         await page.getByText("My Account").click()
-        await page.locator(".accountMenuItems-menubox-H1v").filter({hasText : "Pro Rewards"}).click()
+        await page.locator("//li[@data-list-type='accountMenu.proRewards']").click()
         const status = await page.locator(".statsHead").textContent()
         console.log(status)
     })
