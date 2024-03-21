@@ -7,15 +7,6 @@ class CartPage{
         this.page = page
     }
 
-    async miniCart(){
-        await this.page.getByRole('button',{name: 'CHECKOUT'}).click()
-    }
-
-    async shoppingCart(){
-        await this.page.getByText("Proceed to Checkout").click()
-    }
-
-    
     async gotoProductPage(productUrl) {
         await this.page.goto(productUrl);
     }
@@ -27,6 +18,14 @@ class CartPage{
 
     async verifySuccessMessage(expectedMessage) {
         await expect(this.page.locator(cart.success_addtocartmsg)).toHaveText(expectedMessage);
+    }
+
+    async miniCart(){
+        await this.page.getByRole('button',{name: 'CHECKOUT'}).click()
+    }
+
+    async shoppingCart(){
+        await this.page.getByText("Proceed to Checkout").click()
     }
 
 }
