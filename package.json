@@ -8,6 +8,7 @@
     "production": "npx playwright test smoketest.spec.js --project=chromium_prod --workers=1 --reporter=line,allure-playwright --grep-invert @skip",
     "stg_skip_reg_checkout": "npx playwright test smoketest.spec.js --project=chromium --workers=1 --reporter=line,allure-playwright --grep-invert 'Registration'",
     "logintest" : "npx playwright test smoketest.spec.js --headed --project=chromium --reporter=line,allure-playwright --grep 'Login'"
+    
   },
   "keywords": [],
   "author": "",
