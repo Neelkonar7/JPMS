@@ -65,7 +65,7 @@ test.describe.serial("ProUser Smoke Test",async()=>{
         await page.locator(".field.field-select").first().selectOption("Salon Owner")
         await page.getByPlaceholder("Referrer's Email Address").type("neelprotest@yopmail.com")
         await page.getByRole('button',{name: 'Next'}).click()
-        await page.getByPlaceholder("Salon Street Address").type("10 Ditka Ave,Suite 2500,")
+        await page.getByPlaceholder("Salon Street Address").type("10 Ditka Ave")
         await page.getByPlaceholder("Unit/Suite").type("Suite 12300")
         await page.getByPlaceholder("City").type("Chicago")
         await page.locator("[name='country']").selectOption("United States")

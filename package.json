@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "staging": "npx playwright test smoketest.spec.js --project=chromium --workers=1 --reporter=line,allure-playwright",
-    "production": "npx playwright test smoketest.spec.js --project=chromium_prod --workers=1 --reporter=line,allure-playwright --grep-invert @skip" ,
-    "stg_skip_reg_checkout": "npx playwright test smoketest.spec.js --project=chromium --workers=1 --reporter=line,allure-playwright --grep-invert 'Registration'"
-
+    "production": "npx playwright test smoketest.spec.js --project=chromium_prod --workers=1 --reporter=line,allure-playwright --grep-invert @skip",
+    "stg_skip_reg_checkout": "npx playwright test smoketest.spec.js --project=chromium --workers=1 --reporter=line,allure-playwright --grep-invert 'Registration'",
+    "logintest" : "npx playwright test smoketest.spec.js --headed --project=chromium --reporter=line,allure-playwright --grep 'Login'"
+    
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,8 @@
     "@playwright/test": "^1.41.2",
     "@types/node": "^20.10.5",
     "allure-commandline": "^2.27.0",
-    "allure-playwright": "^2.14.1"
+    "allure-playwright": "^2.14.1",
+    "exceljs": "^4.4.0"
   },
   "dependencies": {
     "convert-excel-to-json": "^1.7.0"

@@ -3,7 +3,10 @@
     "user_icon" : ".accountChip-acctIcon-qJo",
     "emailtxtbx" : "#email",
     "passwordtxtbx" : "#Password",
+    "checkout_emailtxtbx" :"#SignIn-email",
     "emailid" : "neeltest@yopmail.com",
-    "proemailid" : "neelprotest@yopmail.com"
-
+    "proemailid" : "neelprotest@yopmail.com",
+    "firstname": "#firstName",
+    "lastname" : "#lastName",
+    "signupemail" : "#Email"
 }
